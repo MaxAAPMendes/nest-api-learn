@@ -3,7 +3,8 @@
 import { Body, Controller, Get, Post } from "@nestjs/common";
 import { Usuario } from "../entities/Usuario";
 import { UsuarioRepository } from "./usuario.repository";
-
+import { validaEmail } from "src/common/utils";
+import { CriaUsuarioDTO } from "./dto/CriaUsuario.dto";
 
 @Controller('/usuarios')
 export class UsuarioController {
@@ -13,15 +14,17 @@ export class UsuarioController {
   constructor(private repositorioUsuario: UsuarioRepository) {}
 
   @Post('/criar')
-  async criarUsuario(@Body() usuario: Usuario) {
+  async criarUsuario(@Body() usuario: CriaUsuarioDTO) {
     console.log("criando novo usuário")
 
-    if (!usuario.nome || !usuario.id) {
+    /*const { nome, email } = usuario;
+
+    if (!nome || !validaEmail(email)) {
       return {
-      mensagem: 'Não foi possível salvar o usuário, faltam dados!',
-      usuario,
-    }
-    }
+        mensagem: 'Não foi possível salvar o usuário, faltam dados!',
+        usuario,
+      }
+    }*/
     this.repositorioUsuario.salvar(usuario);
     return {
       mensagem:
