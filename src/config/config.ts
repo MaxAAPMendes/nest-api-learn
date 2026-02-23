@@ -1,0 +1,1 @@
+// Gerenciamento de variáveis de ambiente e validação

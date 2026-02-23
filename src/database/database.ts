@@ -1,0 +1,1 @@
+// # Migrations, seeds e configurações de conexão
