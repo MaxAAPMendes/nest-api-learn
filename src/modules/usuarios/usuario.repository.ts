@@ -1,5 +1,7 @@
+import { Injectable } from "@nestjs/common";
 import { Usuario } from "../entities/Usuario";
 
+@Injectable()
 export class UsuarioRepository {
   private usuarios = [];
 

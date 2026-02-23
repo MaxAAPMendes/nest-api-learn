@@ -8,7 +8,9 @@ import { UsuarioRepository } from "./usuario.repository";
 @Controller('/usuarios')
 export class UsuarioController {
 
-  private repositorioUsuario = new UsuarioRepository();
+  //private repositorioUsuario = new UsuarioRepository();
+  // injeção de dependência - a classe injetada precisa tá com o decorator @Injectable
+  constructor(private repositorioUsuario: UsuarioRepository) {}
 
   @Post('/criar')
   async criarUsuario(@Body() usuario: Usuario) {
